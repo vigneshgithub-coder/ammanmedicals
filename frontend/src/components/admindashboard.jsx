@@ -12,7 +12,7 @@ const AdminDashboard = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/products/all');
+      const res = await axios.get('https://ammanmedicals.onrender.com');
       if (res.data.success) {
         setProducts(res.data.products);
       }
@@ -35,7 +35,7 @@ const AdminDashboard = () => {
   const handleAddProduct = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/products/add', formData);
+      const res = await axios.post('https://ammanmedicals.onrender.com', formData);
       if (res.data.success) {
         alert('Product added!');
         fetchProducts();
