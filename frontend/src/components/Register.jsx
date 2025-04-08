@@ -23,7 +23,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://ammanmedicals.onrender.com/api//auth/register', formData);
+      const res = await axios.post('https://ammanmedicals.onrender.com/api/auth/register', formData);
       if (res.data.success) {
         alert('Registration successful!');
         navigate('/');
