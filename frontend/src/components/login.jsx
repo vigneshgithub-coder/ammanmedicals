@@ -13,7 +13,7 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await fetch("https://ammanmedicals.onrender.com/", {
+      const response = await fetch("https://ammanmedicals.onrender.com/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
