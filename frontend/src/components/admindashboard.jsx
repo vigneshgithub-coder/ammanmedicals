@@ -29,7 +29,7 @@ const AdminDashboard = () => {
 
   const addProduct = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/products/add-product', {
+      const response = await axios.post('https://ammanmedicals.onrender.com/api/products/add-product', {
         name: product.name,
         price: parseFloat(product.price),
         description: product.description,
@@ -48,7 +48,7 @@ const AdminDashboard = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/products');
+      const res = await axios.get('https://ammanmedicals.onrender.com/api/products');
       setProducts(res.data);
       setShowProducts(true);
       setShowClients(false);
@@ -84,7 +84,7 @@ const AdminDashboard = () => {
 
   const updateProduct = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/products/${editProductId}`, {
+      await axios.put(`https://ammanmedicals.onrender.com/api/products/${editProductId}`, {
         name: product.name,
         price: parseFloat(product.price),
         description: product.description,
