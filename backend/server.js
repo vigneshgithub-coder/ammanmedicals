@@ -2,9 +2,14 @@
 const app = require('./app');
 const mongoose = require('mongoose');
 require('dotenv').config();
+const Product = require('./models/product');
+const userroutes =require('./routes/userroutes');
 
 
 app.use('/api/admin', require('./routes/admin'));
+app.use('/api/products', require('./routes/productroutes'));
+app.use('/api/users', userroutes);
+
 
 
 mongoose
