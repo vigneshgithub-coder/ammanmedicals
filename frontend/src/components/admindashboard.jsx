@@ -59,7 +59,7 @@ const AdminDashboard = () => {
 
   const fetchClients = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/users'); // Adjust route if different
+      const res = await axios.get('https://ammanmedicals.onrender.com/api/users'); // Adjust route if different
       setClients(res.data);
       setShowClients(true);
       setShowProducts(false);
