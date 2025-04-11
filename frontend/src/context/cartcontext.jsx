@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 // context/cartcontext.js
 
 import { createContext, useContext, useState, useMemo } from 'react';
+=======
+import { createContext, useContext, useState } from 'react';
+>>>>>>> 01fcc50a8a183c4e64b05a7fae0f383ef00042e4
 
 const CartContext = createContext();
 
@@ -25,6 +29,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (productId) => {
+<<<<<<< HEAD
     setCartItems(
       cartItems
         .map((item) =>
@@ -56,6 +61,13 @@ export const CartProvider = ({ children }) => {
         totalPrice
       }}
     >
+=======
+    setCartItems(cartItems.filter((item) => item._id !== productId));
+  };
+
+  return (
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+>>>>>>> 01fcc50a8a183c4e64b05a7fae0f383ef00042e4
       {children}
     </CartContext.Provider>
   );
