@@ -161,7 +161,7 @@ const Home = () => {
 
       <section className="contact-section" id="contact">
         <h2>Contact Us</h2>
-        <p>Email: info@ammanmedicals.com</p>
+        <p>Email: ammanmedicalscbe@gmail.com</p>
         <p>Phone: +91 98765 43210</p>
         <p>Address: Coimbatore, Tamil Nadu</p>
       </section>
