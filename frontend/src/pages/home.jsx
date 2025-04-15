@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useCart } from "../context/cartcontext"; // 📦 Import Cart Context
+import { useCart } from "../context/cartcontext";
+import { FaShoppingCart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const { cartItems, addToCart, removeFromCart, totalItems, totalPrice } = useCart(); // 🛒 Cart hooks
+  const { addToCart, cartItems } = useCart(); // ✅ cartItems added here
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -28,6 +31,40 @@ const Home = () => {
           <li><a href="#services">Services</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
+
+        {/* ✅ Cart Icon with Notification Badge */}
+        <div
+          className="cart-icon"
+          onClick={() => navigate("/cart")}
+          style={{
+            cursor: "pointer",
+            fontSize: "24px",
+            marginLeft: "20px",
+            color: "#fff",
+            position: "relative",
+          }}
+        >
+          <FaShoppingCart />
+
+          {/* 🔴 Notification Count */}
+          {cartItems.length > 0 && (
+            <span
+              style={{
+                position: "absolute",
+                top: "-5px",
+                right: "-10px",
+                backgroundColor: "red",
+                color: "white",
+                borderRadius: "50%",
+                padding: "2px 6px",
+                fontSize: "12px",
+                fontWeight: "bold",
+              }}
+            >
+              {cartItems.length}
+            </span>
+          )}
+        </div>
       </nav>
 
       <header className="hero-section">
@@ -60,7 +97,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ✅ PRODUCTS SECTION */}
       <section className="products-section" style={{ padding: '40px 20px' }}>
         <h2>Available Products</h2>
         {products.length === 0 ? (
@@ -111,50 +147,6 @@ const Home = () => {
                 </button>
               </div>
             ))}
-          </div>
-        )}
-      </section>
-
-      {/* ✅ CART SECTION */}
-      <section style={{ padding: "30px 20px", backgroundColor: "#eef6f6" }}>
-        <h2>Your Cart 🛒</h2>
-        {cartItems.length === 0 ? (
-          <p>No items in cart.</p>
-        ) : (
-          <div>
-            {cartItems.map((item) => (
-              <div
-                key={item._id}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  padding: "10px 0",
-                  borderBottom: "1px solid #ddd",
-                }}
-              >
-                <div>
-                  <strong>{item.name}</strong> x {item.quantity}
-                </div>
-                <div>₹{item.quantity * item.price}</div>
-                <button
-                  onClick={() => removeFromCart(item._id)}
-                  style={{
-                    background: "crimson",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "4px",
-                    padding: "5px 10px",
-                    cursor: "pointer",
-                  }}
-                >
-                  Remove
-                </button>
-              </div>
-            ))}
-            <div style={{ marginTop: "20px", fontWeight: "bold" }}>
-              Total Items: {totalItems} <br />
-              Total Price: ₹{totalPrice}
-            </div>
           </div>
         )}
       </section>
