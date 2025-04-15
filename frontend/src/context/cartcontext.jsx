@@ -26,8 +26,21 @@ export const CartProvider = ({ children }) => {
     setCartItems(cartItems.filter((item) => item._id !== productId));
   };
 
+ const placeorder=(productId)=>{
+  setCartItems(cartItems.filter((item) => item_id !==productId ));
+ };
+
+ const updateCartItemQuantity = (id, newQty) => {
+  setCartItems((prev) =>
+    prev.map((item) =>
+      item._id === id ? { ...item, quantity: newQty } : item
+    )
+  );
+};
+
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart ,placeorder, updateCartItemQuantity,}}>
       {children}
     </CartContext.Provider>
   );
