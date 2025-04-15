@@ -23,7 +23,6 @@ const Cart = () => {
 
       const res = await axios.post("https://ammanmedicals.onrender.com/api/send-otp", { email });
 
-      const res = await axios.post("http://localhost:5000/api/send-otp", { email });
 
       if (res.data.success) {
         setOtpSent(true);
@@ -42,7 +41,7 @@ const Cart = () => {
 
       const res = await axios.post("https://ammanmedicals.onrender.com/api/verify-email-otp", { email, otp });
 
-      const res = await axios.post("http://localhost:5000/api/verify-email-otp", { email, otp });
+  
      if (res.data.success) {
         setVerified(true);
         setError("");
@@ -69,7 +68,7 @@ const Cart = () => {
 
       const res = await axios.post("https://ammanmedicals.onrender.com/api/orders/create", {
 
-      const res = await axios.post("http://localhost:5000/api/orders/create", {
+     
 
         items: itemsToSend,
         totalAmount: totalPrice,
